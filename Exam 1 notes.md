@@ -223,4 +223,309 @@ for(int i = 0; i < rows: ++i)
     array[i] = new int[cols]
 ```
 
+## Array
+an array is a lot like a list in python
+```
+using namespace std;
+
+int main() {
+
+    int luckyNums[] = {4, 5, 6, 8};
+    cout << luckyNums[2];
+    
+    return 0;
+}
+```
+the brackets define luckyNums as an array, the curly brackets define the parameters of the list. the number 2 is the index of the array and would return 6. you can change arrays also.
+
+## Conditional Statements
+&& means and
+|| means or
+if(){}
+else if(){}
+! means not
+else{}
+
+## while loops
+```
+int main(){
+    int index = 1;
+    while(index <= 5){
+        cout << index << endl;
+        index++;
+    }
+}
+```
+you can also do the reverse where you execute then check condition:
+```
+int main(){
+    int index = 6;
+    do{
+        cout << index << endl;
+        index++;
+    }while(index <= 5);
+}
+```
+first the code executes, then the condition is checked. 
+
+## for loops
+```
+int main() {
+    for(int i = 1; index <= 5; i++){ // declair; condition; 
+        cout << i << endl
+    }
+}
+```
+
+## 2d Array and nested for loops
+2d array
+```
+int main(){
+    int numberGrid[3][5] = { 
+        {1, 2, 3, 4, 5}
+        {6, 7, 8, 9, 10}
+        {11, 12, 13, 14 15}
+    }
+    return 0
+}
+```
+// note that it is crucial to specify 3 and 2. 3 arrays inside of numberGrid and inside each nested array. 
+
+nested for loop
+```
+int main(){
+    int numberGrid[3][5] = { 
+        {1, 2, 3, 4, 5}
+        {6, 7, 8, 9, 10}
+        {11, 12, 13, 14 15}
+    }
+    
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 5; j++){
+            cout << numberGrid[i][j];
+        }
+        cout << endl;
+    }
+    return 0
+}
+>>>12345
+>>>678910
+>>>1112131415
+```
+
+## pointers
+```
+int main(){
+    int age = 19;
+    double gpa = 2.7;
+    string name = "Mike";
+
+    cout << &age; //& tells the computer to return the memory address of the variable age.
+
+    return 0'
+}
+```
+Try * and &:
+```
+int main(){
+    int age = 19;
+    int *pAge = &age;
+    double gpa = 2.7;
+    double *pGpa = &gpa;
+    string name = "Mike";
+
+    cout << pAge;
+    cout << *pAge;
+
+    return 0'
+
+>>>MEMORY ADDRESS LONG COMPLEX NUMBER
+>>> 19
+}
+```
+
+## cerr
+cerr is used to show information on the error screen. Used for debugging?
+```
+if (argc < 3)
+{
+   cerr << "Please provide name of input and output files";
+   return 1;
+}
+cout << "Input file: " << argv[1] << endl;
+ifstream in(argv[1]);
+if (!in)
+{
+   cerr << "Unable to open " << argv[1] << " for input";
+   return 2;
+}
+cout << "Output file: " << argv[2] << endl;
+ofstream out(argv[2]);
+if (!out)
+{
+   in.close();
+   cerr << "Unable to open " << argv[2] << " for output";
+   return 3;
+}
+```
+
+
+# Language Library
+
+### `#`Include
+`#`Include is always placed at the top to include a file from the C++ Language Library
+It is always preceeded by a file name such as <iostream> or Input output stream.
+
+### cout
+cout is equivelant to print in python
+```
+int main(){
+    int a = 1
+    std::cout << a
+    return 0
+}
+>>> 1
+```
+note that std stands for short form standard, it contains built-in classes and declares functions
+
+### const
+const declares a variable as non-changable
+```
+int main(){
+    const int a = 1
+    std::cout << a
+    return 0
+}
+>>> 1
+```
+
+### double
+double is equivelant to float in python. Integer with decimals.
+```
+int main() {
+    double a = 10 //or 10.0
+    int b = 3
+    double z = a / b
+    std::cout << z
+    return 0
+}
+>>> 3.3333
+```
+
+### plus plus or minus minus
+++ or -- are equivelant to += 1 and -= 1
+```
+int x = 1;
+x++;
+stx::cout << x;
+return 0;
+>>> 2
+```
+note this use of ++
+```
+int x = 10;
+int y = x++;
+int z = ++x;
+std::cout << x;
+std::cout << y;
+std::cout << z;
+return 0;
+>>> 11
+>>> 10
+>>> 12
+```
+y in this case is equal to the initial value of x(10), and x is then set to x+1, or 11. z is set to x + 1 as well as x. because it is added to twice it will be 12
+
+### endl
+endl is used to print on the next line down.
+```
+int a = 1
+int b = 2
+std::cout << "a = " << a;
+std::cout << "b = " << b;
+return 0
+>>> a = 1b = 2
+```
+instead try this
+```
+int a = 1
+int b = 2
+std::cout << "a = " << a << std::endl;
+std::cout << "b = " << b;
+return 0
+>>> a = 1
+>>> b = 2
+```
+
+### namespace
+use namespace to avoid repetition with std
+
+```
+`#`input <iostream>
+
+using namespace std;
+
+int main(){
+    int a = 1
+    int b = 2
+    cout << "a = " << a << sendl
+         << "b = " << b;
+return 0
+}
+>>> a = 1
+>>> b = 2
+```
+
+### cin
+cin is the opposite of cout. instead of printing a value it is used to imput a value.
+```
+#input <iostream>
+
+using namespace std;
+
+int main(){
+    cout << "Enter a Value: ";
+    double value;
+    cin >> value;
+    cout << value;
+    return 0
+}
+>>> Enter a Value: //you then enter a number
+10.5
+>>> 10.5 // where value is now equal to 10.5
+```
+### floor / pow
+
+floor takes a double and creates an int
+
+```
+double int a = floor(1.2); //a = 1
+```
+
+pow lets you put x to the power of y
+``` 
+int a = pow(2, 3) //a=8
+```
+
+### Variable types
+float is used to include integers, ends with f. 
+long (Long int) ** end value with L
+char is a single character
+bool is boolean value - true; or false;
+
+### <cstdlib> and <ctime>
+randome library!
+* rand()
+* time(0) - number of seconds since Jan 1970
+```
+int main() {
+    long elapsedSeconds = time(0);
+    srand(elapsedSeconds); // or srand(time(0))
+    int number = rand() % 10;
+    cout << number;
+    return 0;
+}
+```
+
+
 
