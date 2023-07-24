@@ -1,5 +1,12 @@
 ----- May 5 ----- 
 
+
+g++ "Lab 1.cpp" -o grades
+
+./run InputFile.txt OutputFile.txt
+
+
+
 Tool chain
 
 C/C++ Code -> Source Files (source file has syntax, is more readable)
@@ -526,6 +533,81 @@ int main() {
     return 0;
 }
 ```
+
+
+### Call by reference - pointer
+
+```
+void swap(int& x, int& y) // these must be passes l-value arguments
+{
+    FUNCTION
+}
+
+int main()
+{
+    int a = 10;
+    int b = 20;
+    swap(a, b); // these are l values becaue they refer to another input.
+    swap(10, 20); // this would throw a compile error.
+};
+```
+
+Note that the dereferencing operator (*) can access the contents of the memory location it points to. 
+
+Note that address-of operator (&) returns an r-value address of its l-value argument.
+
+
+### 2d array - creation
+
+```
+int** a = new int*[rowCount];
+for(int i = 0; i < rowCount; ++ i)
+    a[i] = new int[colCount];
+```
+
+### identify and cout words separated by white space
+
+```
+int countWords(string str)
+{
+    stringstream ss(str); // makes individual words?
+    string word;
+    int count = 0;
+    while (ss >> word) // while there are individual words it will store them in word
+    {
+        count++;
+        cout << word << endl
+    }
+    return count;
+}
+int main()
+{
+    string str = "YA YA YA YA YA YA YES";
+    cout << countWords(str);
+    return 0
+}
+```
+
+## Debugging
+### try block
+your code is as follows:
+```
+age = read_int("Enger your age: ");
+```
+to catch any input that is not correct(ie not an int) than you can throw try and catch blocks
+```
+try
+{
+    age = read_int("Enger your age: ");
+}
+catch(...) // many typesof catch statements. 
+{
+    cerr << endl << "Undefined exception in read_int";
+    about();
+}
+
+
+### catch block
 
 
 

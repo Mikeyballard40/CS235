@@ -1,0 +1,35 @@
+INT  OK
+add 1 OK
+add 2 OK
+add 3 OK
+find 0 not found
+find 1 found
+find 2 found
+find 3 found
+STRING  OK
+find 0 not found
+find 1 not found
+add lazy OK
+add lazy Error
+print 
+  1: lazy
+add dog. OK
+add fox OK
+add brown OK
+add quick OK
+add The OK
+size 6
+print 
+  1: lazy
+  2: dog. quick
+  3: brown fox
+  4: The _
+find lazy found
+find fox found
+find dog not found
+size 6
+print 
+  1: lazy
+  2: dog. quick
+  3: brown fox
+  4: The _

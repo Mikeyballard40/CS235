@@ -1,0 +1,10 @@
+{
+    "liveServer.settings.port": 5501,
+    "files.associations": {
+        "iosfwd": "cpp",
+        "string": "cpp",
+        "iostream": "cpp",
+        "filesystem": "cpp",
+        "ostream": "cpp"
+    }
+}

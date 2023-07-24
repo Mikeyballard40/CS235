@@ -1,0 +1,26 @@
+Insert The very quick brown fox jumped over the very lazy dog. 
+PrintList dog. lazy very the over jumped fox brown quick very The 
+PrintCopy Empty!
+Copy OK
+PrintList dog. lazy very the over jumped fox brown quick very The 
+PrintCopy dog. lazy very the over jumped fox brown quick very The 
+Delete OK
+PrintList lazy very the over jumped fox brown quick very The 
+PrintCopy dog. lazy very the over jumped fox brown quick very The 
+Clear OK
+PrintList Empty!
+PrintCopy dog. lazy very the over jumped fox brown quick very The 
+Copy OK
+PrintList Empty!
+PrintCopy Empty!
+Insert One-word 
+Copy OK
+PrintList One-word 
+PrintCopy One-word 
+Clear OK
+Insert Ask not what your country can do for you. 
+PrintList you. for do can country your what not Ask 
+PrintCopy One-word 
+Copy OK
+PrintList you. for do can country your what not Ask 
+PrintCopy you. for do can country your what not Ask 

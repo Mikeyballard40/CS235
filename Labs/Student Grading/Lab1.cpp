@@ -5,22 +5,26 @@
 #include <vector>
 #include <iomanip>
 
-
 using namespace std;
+
 
 
 int main(int argc, char* argv[]) {
 
+
     int ROWS;
     int COLS;
 
+    // Check if the file path is provided as a command line argument
     if (argc < 2) {
         cout << "Please provide the file path as a command line argument." << endl;
         return 1;
     }
 
+    // Open the file
     ifstream file(argv[1]);
     ofstream out(argv[2]);
+
 
     file >> ROWS >> COLS;
     ROWS += 1;
@@ -31,13 +35,23 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    string array[ROWS][COLS];
+    // Create a 2D array
 
+    // string array[ROWS][COLS];
+
+    string **array = new string *[ROWS];
+    for(int i = 0; i<ROWS; i++){
+        array[i] = new string[COLS];
+    }
+
+
+    // Read the file line by line
     string line;
     int row = 0;
     while (getline(file, line) && row < ROWS) {
         istringstream iss(line);
 
+        // Read the elements and store them in the array
         for (int col = 0; col < COLS && iss.good(); col++) {
             iss >> array[row][col];
         }
@@ -45,12 +59,10 @@ int main(int argc, char* argv[]) {
         row++;
     }
 
+    // Close the file
     file.close();
 
-
     // return the Student Scores / array
-
-
     out << "Student Scores:";
     for (int row = 0; row < ROWS; row++) {
         for (int col = 0; col < COLS; col++) {
@@ -61,8 +73,7 @@ int main(int argc, char* argv[]) {
         out << endl;
     }
     out << endl;
-
-    // //creating two arrays. int and string.;
+//     // //creating two arrays. int and string.;
 
     string sArray[ROWS - 1][2]; //account for first row, and only counting the first two rows.
     string tArray[ROWS - 1][COLS - 2]; //accounting for the first two which are names. not included
@@ -73,16 +84,17 @@ int main(int argc, char* argv[]) {
                 }
                 else if((i > 0) && (j < 2)){
                     sArray[i][j] = array[i][j];
+                    //out << sArray[i][j] << endl;
                 }
             }
         }
 
-        out << fixed << setprecision(1); 
+        out << fixed << setprecision(1); //****************** NEEDS TO BE FIXED!!!!! NOT ROUNDING PROPPERLY
 
         out << "Exam Averages:" << endl;
 
         int x;
-        int counter;
+        double counter;
         double lady;
         int testArray[ROWS - 1][COLS - 2];
         for(int i = 1; i < ROWS; ++i){
@@ -97,9 +109,7 @@ int main(int argc, char* argv[]) {
         }
         out << endl;
     
-
-// //student exam grades
-
+// // //student exam grades
 
     out << "Student Exam Grades:" << endl;
 
@@ -135,9 +145,7 @@ int main(int argc, char* argv[]) {
     };
 out << endl;
 
-
 // // //exam grades
-
 
     out << "Exam Grades:" << endl;
     int examCount = 1;
@@ -183,14 +191,18 @@ out << endl;
             out << "Exam" << " " << examCount <<  " " << A << "(A)" <<  " " << B << "(B)" << " " << C << "(C)" << " " << D << "(D)" << " " <<E << "(E)" << endl;
         examCount++;
     };
+    out << endl;
+
+
+
+
 
 
 // //student final grades
 
-
-    cout << "Student Final Grade:" << endl;
+    out << "Student Final Grade:" << endl;
     int count = 0;
-    int totalPoints = 0;
+    double totalPoints = 0;
     double finalTotalPoints = 0;
     int finalCount = 0;
 
@@ -198,16 +210,41 @@ out << endl;
         totalPoints = 0;
         count = 0;
         for(int j = 0; j < (COLS - 2); ++j){
-               if(j < 2){
+            if(j < 2){
             }
             else{
                 totalPoints += testArray[i][j];
                 count++;
             }
         }
-        
-        cout << array[i][0] << " " << array[i][1] << " " << totalPoints / count << endl;
+        finalTotalPoints += totalPoints;
+        finalCount += count;
+        out << array[i][0] << " " << array[i][1] << " " << (totalPoints / count);
+            if(90 <= (totalPoints / count)){
+                    out << "(A)" << " ";
+                }
+                else if(80 <= (totalPoints / count) && (totalPoints / count) < 90){
+                    out << "(B)" << " ";
+                }
+                else
+                    {
+                    if(70 <= (totalPoints / count) && (totalPoints / count) < 80){
+                    out << "(C)" << " ";
+                    }
+                    else if(60 <= (totalPoints / count) && (totalPoints / count)< 70){
+                        out << "(D)" << " ";
+                    }
+                    else
+                        {
+                           out << "(E)" << " ";
+                        };
+                    }
+        out << endl;
     }
+    out << endl;
+
+    out << " Class Average Results: " << finalTotalPoints / finalCount;
+
 
     return 0;
 };
